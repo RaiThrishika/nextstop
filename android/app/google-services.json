@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573902408662",
+    "project_id": "nextstop-demo",
+    "storage_bucket": "nextstop-demo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573902408662:android:ed2d0add10deed263e7277",
+        "android_client_info": {
+          "package_name": "com.bluefort.nextstop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-WuGdMj19subvjjtFqRQ1X5o0itJ3cbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
