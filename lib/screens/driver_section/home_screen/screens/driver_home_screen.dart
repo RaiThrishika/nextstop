@@ -8,7 +8,8 @@ class DriverHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return
+      MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DriverHomeScreenModel(context)),
       ],
@@ -34,36 +35,51 @@ class DriverHomeScreen extends StatelessWidget {
                       model.mapController.complete(controller);
                     },
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Text(
-                      //   model.currentPosition != null
-                      //       ? "Lat: ${model.currentPosition!.latitude}, "
-                      //           "Long: ${model.currentPosition!.longitude}"
-                      //       : "Fetching location...",
-                      // ),
-                      SizedBox(height: 20),
-                      Visibility(
-                        visible: !model.hideStartButton,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            model.startLocationUpdates(context);
-                          },
-                          child: Text("Start Updates"),
+                  Positioned(
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: model.hideStartButton
+                          ? ElevatedButton.icon(
+                        onPressed: () {
+                          model.stopLocationUpdates();
+                        },
+                        icon: const Icon(Icons.stop, size: 24),
+                        label: const Text(
+                          "Stop Updates",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red.shade700,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      )
+                          : ElevatedButton.icon(
+                        onPressed: () {
+                          model.startLocationUpdates(context);
+                        },
+                        icon: const Icon(Icons.play_arrow, size: 24),
+                        label: const Text(
+                          "Start Updates",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green.shade700,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Visibility(
-                        visible: model.hideStartButton,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            model.stopLocationUpdates();
-                          },
-                          child: Text("Stop Updates"),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),

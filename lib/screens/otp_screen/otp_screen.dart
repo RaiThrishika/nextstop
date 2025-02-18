@@ -26,66 +26,69 @@ class OtpScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                            ))
-                      ],
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          )),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(26.0),
+                    Expanded(
                       child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              "Enter OTP",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            _buildTextField(
-                                icon: Icons.numbers, label: '', model: model),
-                            SizedBox(height: 20),
-                            Visibility(
-                              visible: !model.loading,
-                              replacement: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  model.verifyOtp();
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  // primary: Colors.white,
-                                  // onPrimary: Colors.purple,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 40,
-                                    vertical: 15,
-                                  ),
-                                ),
-                                child: Text(
-                                  'Submit',
+                        child: Padding(
+                          padding: const EdgeInsets.all(26.0),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Enter OTP",
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    color: Colors.white,
+                                    fontSize: 36,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
+                                SizedBox(height: 20),
+                                _buildTextField(
+                                    icon: Icons.numbers, label: '', model: model),
+                                SizedBox(height: 20),
+                                Visibility(
+                                  visible: !model.loading,
+                                  replacement: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      model.verifyOtp();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      // primary: Colors.white,
+                                      // onPrimary: Colors.purple,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 40,
+                                        vertical: 15,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'Submit',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),

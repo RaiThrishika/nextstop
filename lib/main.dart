@@ -1,16 +1,47 @@
 import 'dart:async';
-import 'package:driver_app/screens/driver_section/home_screen/screens/polyline_map_screen.dart';
+import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
+import 'package:dio/dio.dart';
+import 'package:driver_app/core/base_constants.dart';
+import 'package:driver_app/core/di/injectable.dart';
+import 'package:driver_app/core/utils/app_bloc_observer.dart';
+import 'package:driver_app/features/driver_module/data/services/api_service.dart';
+import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/route_stops_list_bloc/route_stops_list_bloc.dart';
+import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/update_trip_status_bloc/update_trip_status_bloc.dart';
+import 'package:driver_app/screens/driver_section/home_screen/screens/driver_map_screen.dart';
 import 'package:driver_app/screens/parent_section/parent_home_screen/parent_home_screen.dart';
 import 'package:driver_app/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   // await NotificationService.instance.initialize();
-  runApp(const MyApp());
+  configureDependencies();
+  SharedPrefs.shared = await SharedPreferences.getInstance();
+  Bloc.observer = AppBlocObserver();
+  final dio = getIt.get<Dio>();
+  dio.interceptors.add(
+    AwesomeDioInterceptor(
+      logRequestTimeout: false,
+      logRequestHeaders: true,
+      logResponseHeaders: true,
+    ),
+  );
+  addDioHeader();
+  runApp(MultiBlocProvider(
+      providers: [
+  BlocProvider<GetRouteStopsListBloc>(
+  create: (context) => getIt.get<GetRouteStopsListBloc>(),
+  ),
+  BlocProvider<UpdateTripStatusBloc>(
+  create: (context) => getIt.get<UpdateTripStatusBloc>(),
+  ),
+      ],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,27 +54,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutte r-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: M ost code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       // home: ParentHomeScreen(),
-      // home: SplashScreen(),
-      home: DriverMapScreen(),
+      home: SplashScreen(),
+      // home: DriverMapScreen(),
     );
   }
 }
