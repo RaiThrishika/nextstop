@@ -8,7 +8,7 @@ import 'package:driver_app/features/driver_module/data/services/api_service.dart
 import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/route_stops_list_bloc/route_stops_list_bloc.dart';
 import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/update_trip_status_bloc/update_trip_status_bloc.dart';
 import 'package:driver_app/screens/driver_section/home_screen/screens/driver_map_screen.dart';
-import 'package:driver_app/screens/parent_section/parent_home_screen/parent_home_screen.dart';
+import 'package:driver_app/features/driver_module/presentation/parent_section/parent_home_screen/parent_home_screen.dart';
 import 'package:driver_app/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +57,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: ParentHomeScreen(),
-      home: SplashScreen(),
+      home: ParentHomeScreen(),
+      // home: SplashScreen(),
       // home: DriverMapScreen(),
     );
   }

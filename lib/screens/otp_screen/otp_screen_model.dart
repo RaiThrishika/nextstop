@@ -1,7 +1,7 @@
 import 'package:driver_app/screens/driver_section/home_screen/screens/driver_home_screen.dart';
 import 'package:driver_app/model/user_type.dart';
 import 'package:driver_app/screens/driver_section/home_screen/screens/driver_map_screen.dart';
-import 'package:driver_app/screens/parent_section/parent_home_screen/parent_home_screen.dart';
+import 'package:driver_app/features/driver_module/presentation/parent_section/parent_home_screen/parent_home_screen.dart';
 import 'package:driver_app/services/common_memory.dart';
 import 'package:driver_app/services/otp_services.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:driver_app/core/base_constants.dart';
 import 'package:driver_app/screens/driver_section/home_screen/screens/driver_map_screen.dart';
 import 'package:driver_app/screens/login_screen/login_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -227,6 +228,9 @@ class _IntroScreenState extends State<IntroScreen> {
                     alignment: Alignment.center,
                     child: InkWell(
                       onTap: () {
+                        setState(() {
+                          SharedPrefs.setIsSkipped(true);
+                        });
                         Navigator.pushReplacement(
                             context, MaterialPageRoute(builder: (context) => LoginScreen()));
                       },

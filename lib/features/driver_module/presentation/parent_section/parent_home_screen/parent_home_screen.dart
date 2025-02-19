@@ -1,4 +1,4 @@
-import 'package:driver_app/screens/parent_section/parent_home_screen/parent_home_screen_model.dart';
+import 'package:driver_app/features/driver_module/presentation/parent_section/parent_home_screen/parent_home_screen_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui' as ui;
