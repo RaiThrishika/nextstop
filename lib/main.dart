@@ -7,13 +7,13 @@ import 'package:driver_app/core/utils/app_bloc_observer.dart';
 import 'package:driver_app/features/driver_module/data/services/api_service.dart';
 import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/route_stops_list_bloc/route_stops_list_bloc.dart';
 import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/update_trip_status_bloc/update_trip_status_bloc.dart';
-import 'package:driver_app/screens/driver_section/home_screen/screens/driver_map_screen.dart';
+import 'package:driver_app/features/driver_module/presentation/driver_home_screen/home_screen/screens/driver_map_screen.dart';
+import 'package:driver_app/features/driver_module/presentation/parent_section/parent_home_screen/dashboard_widget.dart';
 import 'package:driver_app/features/driver_module/presentation/parent_section/parent_home_screen/parent_home_screen.dart';
 import 'package:driver_app/screens/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -54,10 +54,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: Colors.purple,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ParentHomeScreen(),
+      home: DashboardScreen(),
       // home: SplashScreen(),
       // home: DriverMapScreen(),
     );

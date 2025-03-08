@@ -2,7 +2,7 @@ import 'package:driver_app/core/utils/common_error_loading_widget.dart';
 import 'package:driver_app/core/utils/date_time_formatter.dart';
 import 'package:driver_app/features/driver_module/domain/entities/get_route_stops_response.dart';
 import 'package:driver_app/features/driver_module/presentation/driver_home_screen/blocs/route_stops_list_bloc/route_stops_list_bloc.dart';
-import 'package:driver_app/screens/driver_section/home_screen/screens/driver_home_screen_model.dart';
+import 'package:driver_app/features/driver_module/presentation/driver_home_screen/home_screen/screens/driver_home_screen_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -66,7 +66,6 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
         );
       }
     });
-
     _getPolyline();
   }
 
@@ -87,7 +86,6 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
             .whereType<LatLng>(),
       school
     ];
-
     setState(() {
       polylines.add(
         Polyline(

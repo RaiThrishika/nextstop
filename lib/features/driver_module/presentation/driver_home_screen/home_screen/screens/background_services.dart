@@ -53,4 +53,5 @@ Future<bool> onBackground(ServiceInstance service) async {
 // Dummy function to send location to server
 void sendLocationToServer(double lat, double lon) {
   print("Sent to Server: $lat, $lon");
+  // sendLocationToApi();
 }

@@ -1,4 +1,4 @@
-import 'package:driver_app/screens/driver_section/home_screen/screens/driver_home_screen_model.dart';
+import 'package:driver_app/features/driver_module/presentation/driver_home_screen/home_screen/screens/driver_home_screen_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
